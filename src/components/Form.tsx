@@ -1,32 +1,73 @@
-import { Box, Button, Checkbox, Stack, TextField, Typography } from "@mui/material"
+import { Box, Button, Checkbox, Stack, TextField, Typography, styled } from "@mui/material"
+import { Container, Title } from "./Styled"
+
+const TextFieldStyled = styled(TextField)(({ theme }) => ({
+    color: "#5E646A",
+    fontSize: "18px",
+    fontWeight: 600,
+    backgroundColor: "#F6F8FA",
+    [theme.breakpoints.down("lg")]: {
+        width: "350px"
+    },
+    [theme.breakpoints.down("md")]: {
+        width: "70%"
+    },
+    [theme.breakpoints.down("sm")]: {
+        width: "100%"
+    },
+    [theme.breakpoints.down("xs")]: {
+        width: "100%"
+    }
+}))
 
 export const Form = () => {
     return (
         <>
-            <Box py="80px">
-                <Typography color="#191C1F" fontWeight={600} textAlign="center" fontSize={{ lg: "40px", sm: "24px", xs: "24px" }} lineHeight="32px" mb="44px">
-                    Отправь форму
-                </Typography>
-                <Box maxWidth="700px" mx="auto">
-                    <Stack mb="30px" direction={{ lg: "row", md: "row", sm: "column", xs: "column" }} justifyContent="space-between" spacing={2}>
-                        <TextField variant="outlined" label="Имя" sx={{ fontSize: "18px", fontWeight: 400, bgcolor: "#F6F8FA", color: "#5E646A", width: { lg: "350px", md: "70%", sm: "100%", xs: "100%" } }} />
-                        <TextField variant="outlined" label="Телефон" sx={{ fontSize: "18px", fontWeight: 400, bgcolor: "#F6F8FA", color: "#5E646A", width: { lg: "350px", md: "70%", sm: "100%", xs: "100%" } }} />
-                    </Stack>
-                    <Stack direction={{ lg: "row", md: "row", sm: "column", xs: "column" }} justifyContent="space-between" spacing={2}>
-                        <Box display="flex" alignItems="center" width="100%">
-                            <Checkbox />
-                            <Typography fontSize="16px" fontWeight={400} lineHeight="28px" color="#191C1F">
-                                Согласен, отказываюсь
-                            </Typography>
-                        </Box>
-                        <Box width="100%">
-                            <Button variant="contained" sx={{ width: { lg: "340px", md: "100%", sm: "100%", xs: "100%" }, py: "12px" }}>
-                                Отправить
-                            </Button>
-                        </Box>
-                    </Stack>
+            <Container>
+                <Box py="80px">
+                    <Title mb="44px">
+                        Отправь форму
+                    </Title>
+                    <Box maxWidth="700px" mx="auto">
+                        <Stack
+                            direction={{ lg: "row", md: "row", sm: "column", xs: "column" }} justifyContent="space-between"
+                            spacing={2}
+                            mb="30px"
+                        >
+                            <TextFieldStyled variant="outlined" label="Имя" />
+                            <TextFieldStyled variant="outlined" label="Телефон" />
+                        </Stack>
+                        <Stack
+                            direction={{ lg: "row", md: "row", sm: "column", xs: "column" }} justifyContent="space-between"
+                            spacing={2}
+                        >
+                            <Box sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                width: "100%"
+                            }}>
+                                <Checkbox />
+                                <Typography sx={{
+                                    fontSize: "16px",
+                                    fontWeight: 400,
+                                    lineHeight: "28px",
+                                    color: "#191C1F"
+                                }}>
+                                    Согласен, отказываюсь
+                                </Typography>
+                            </Box>
+                            <Box width="100%">
+                                <Button variant="contained" sx={{
+                                    width: { lg: "340px", md: "100%", sm: "100%", xs: "100%" },
+                                    py: "12px"
+                                }}>
+                                    Отправить
+                                </Button>
+                            </Box>
+                        </Stack>
+                    </Box>
                 </Box>
-            </Box>
+            </Container>
         </>
     )
 }

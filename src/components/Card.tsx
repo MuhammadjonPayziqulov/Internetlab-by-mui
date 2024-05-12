@@ -1,83 +1,162 @@
 import { ChevronLeft, ChevronRight, Lens } from "@mui/icons-material"
-import { Box, Typography, Toolbar, Card, CardHeader, Avatar, CardContent, Stack, CardActionArea } from "@mui/material"
+import { Box, Typography, Card, CardHeader, Avatar, CardContent, Stack, CardActionArea, styled } from "@mui/material"
+import { Container, Title } from "./Styled"
+
+const TurnIconStyled = styled(Box)({
+    color: "#C2C8CD",
+    cursor: "pointer",
+    ":hover": { color: "#2A6CEA" }
+})
+
+const CardWrapperStyled = styled(Stack)({
+    display: "flex",
+    flexDirection: "row",
+    margin: "0 auto",
+    gap: "15px"
+})
+
+const CardStyled = styled(Card)({
+    maxWidth: 341,
+    height: 280,
+    padding: "5px"
+})
+
+const CardContentTextStyled = styled(Typography)({
+    color: "#191C1F",
+    fontWeight: 400,
+    fontSize: "14px",
+    lineHeight: "24px",
+    marginTop: "-10px"
+})
+
+const CardActionAreaStyled = styled(CardActionArea)(({ theme }) => ({
+    display: "flex",
+    position: "static",
+    [theme.breakpoints.down(850)]: {
+        display: "none"
+    },
+    [theme.breakpoints.down("md")]: {
+        display: "none"
+    },
+    [theme.breakpoints.down("sm")]: {
+        display: "none"
+    },
+    [theme.breakpoints.down("xs")]: {
+        display: "none"
+    }
+}))
+
+const CardActionAreaStyledForMobile = styled(CardActionArea)(({ theme }) => ({
+    display: "block",
+    position: "static",
+    [theme.breakpoints.down("md")]: {
+        display: "block"
+    },
+    [theme.breakpoints.down(600)]: {
+        display: "none"
+    },
+    [theme.breakpoints.down("sm")]: {
+        display: "none"
+    },
+    [theme.breakpoints.down("xs")]: {
+        display: "none"
+    }
+}))
+
+const LensIconStyle = {
+    color: "#C2C8CD",
+    width: "8px",
+    height: "8px"
+}
 
 export const CardPost = () => {
     return (
         <Box bgcolor="#F6F8FA" pt="57px" pb="45px">
-            <Typography textAlign="center" color="#191C1F" fontWeight={600}
-                fontSize={{ lg: "40px", md: "40px", sm: "24px", xs: "24px" }}
-                mb={{ lg: "32px", md: "32px", sm: "26px", xs: "26px" }}>
-                Отзывы
-            </Typography>
-            <Toolbar>
-                <Box>
-                    <ChevronLeft sx={{ color: "#C2C8CD", fontSize: "40px", cursor: "pointer", "&:hover": { color: "#2A6CEA" }, display: { lg: "flex", md: "none", sm: "none", xs: "none" } }} />
+            <Container>
+                <Title sx={{
+                    marginBottom: { lg: "32px", md: "32px", sm: "26px", xs: "26px" }
+                }}>
+                    Отзывы
+                </Title>
+                <Box sx={{
+                    display: "flex",
+                    alignItems: "center"
+                }}>
+                    <TurnIconStyled>
+                        <ChevronLeft sx={{
+                            display: { lg: "flex", md: "flex", sm: "none", xs: "none" },
+                            fontSize: "40px",
+                        }} />
+                    </TurnIconStyled>
+                    <CardWrapperStyled>
+                        <CardActionArea sx={{ position: "static" }}>
+                            <CardStyled >
+                                <CardHeader
+                                    avatar={
+                                        <Avatar sx={{ position: "static" }}>
+                                            К
+                                        </Avatar>
+                                    }
+                                    title="Константинов Михаил Павлович"
+                                    subheader="Санкт-Петербург"
+                                />
+                                <CardContent>
+                                    <CardContentTextStyled>
+                                        Каждый из нас понимает очевидную вещь: перспективное планирование предоставляет широкие возможности для анализа существующих паттернов поведения. В своём стремлении улучшить пользовательский опыт мы
+                                    </CardContentTextStyled>
+                                </CardContent>
+                            </CardStyled>
+                        </CardActionArea>
+                        <CardActionAreaStyledForMobile>
+                            <CardStyled>
+                                <CardHeader
+                                    avatar={
+                                        <Avatar sx={{ position: "static" }} />
+                                    }
+                                    title="Иван Иванов"
+                                    subheader="Санкт-Петербург"
+                                />
+                                <CardContent>
+                                    <CardContentTextStyled>
+                                        Каждый из нас понимает очевидную вещь: перспективное планирование предоставляет широкие возможности для анализа существующих паттернов поведения. В своём стремлении улучшить пользовательский опыт мы упускаем, что активно развивающиеся страны третьего мира призваны к ответу.
+                                    </CardContentTextStyled>
+                                </CardContent>
+                            </CardStyled>
+                        </CardActionAreaStyledForMobile>
+                        <CardActionAreaStyled >
+                            <CardStyled>
+                                <CardHeader
+                                    avatar={
+                                        <Avatar sx={{ position: "static" }}>
+                                            К
+                                        </Avatar>
+                                    }
+                                    title="Артем Корнилов"
+                                    subheader="Самара"
+                                />
+                                <CardContent>
+                                    <CardContentTextStyled>
+                                        Каждый из нас понимает очевидную вещь: перспективное планирование предоставляет широкие возможности для анализа существующих паттернов поведения.
+                                    </CardContentTextStyled>
+                                </CardContent>
+                            </CardStyled>
+                        </CardActionAreaStyled>
+                    </CardWrapperStyled>
+                    <TurnIconStyled>
+                        <ChevronRight sx={{
+                            display: { lg: "flex", md: "flex", sm: "none", xs: "none" },
+                            fontSize: "40px",
+                        }} />
+                    </TurnIconStyled>
                 </Box>
-                <Stack direction="row" spacing={4} mx="auto">
-                    <CardActionArea>
-                        <Card sx={{ maxWidth: 341, height: 280, p: "5px" }} >
-                            <CardHeader
-                                avatar={
-                                    <Avatar >
-                                        К
-                                    </Avatar>
-                                }
-                                title="Константинов Михаил Павлович"
-                                subheader="Санкт-Петербург"
-                            />
-                            <CardContent sx={{ mt: "-10px" }}>
-                                <Typography variant="body2" color="#191C1F" fontWeight={400} fontSize="14px" lineHeight="24px">
-                                    Каждый из нас понимает очевидную вещь: перспективное планирование предоставляет широкие возможности для анализа существующих паттернов поведения. В своём стремлении улучшить пользовательский опыт мы
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </CardActionArea>
-                    <CardActionArea sx={{ display: { lg: "block", md: "block", sm: "none", xs: "none" } }}>
-                        <Card sx={{ maxWidth: 341, height: 280, p: "5px" }} >
-                            <CardHeader
-                                avatar={
-                                    <Avatar />
-                                }
-                                title="Иван Иванов"
-                                subheader="Санкт-Петербург"
-                            />
-                            <CardContent sx={{ mt: "-10px" }}>
-                                <Typography variant="body2" color="#191C1F">
-                                    Каждый из нас понимает очевидную вещь: перспективное планирование предоставляет широкие возможности для анализа существующих паттернов поведения. В своём стремлении улучшить пользовательский опыт мы упускаем, что активно развивающиеся страны третьего мира призваны к ответу.
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </CardActionArea>
-                    <CardActionArea sx={{ display: { lg: "flex", md: "none", sm: "none", xs: "none" } }}>
-                        <Card sx={{ maxWidth: 341, height: 280, p: "5px", }} >
-                            <CardHeader
-                                avatar={
-                                    <Avatar >
-                                        К
-                                    </Avatar>
-                                }
-                                title="Артем Корнилов"
-                                subheader="Самара"
-                            />
-                            <CardContent sx={{ mt: "-10px" }}>
-                                <Typography variant="body2" color="#191C1F">
-                                    Каждый из нас понимает очевидную вещь: перспективное планирование предоставляет широкие возможности для анализа существующих паттернов поведения.
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </CardActionArea>
+                <Stack mt="50px" direction="row" spacing={1} justifyContent="center">
+                    <Lens sx={{ color: "#2A6CEA", width: "8px", height: "8px" }} />
+                    <Lens sx={LensIconStyle} />
+                    <Lens sx={LensIconStyle} />
+                    <Lens sx={LensIconStyle} />
+                    <Lens sx={LensIconStyle} />
                 </Stack>
-                <Box>
-                    <ChevronRight sx={{ color: "#C2C8CD", fontSize: "40px", cursor: "pointer", "&:hover": { color: "#2A6CEA" }, display: { lg: "flex", md: "none", sm: "none", xs: "none" } }} />
-                </Box>
-            </Toolbar>
-            <Stack mt="50px" direction="row" spacing={1} justifyContent="center">
-                <Lens sx={{ color: "#2A6CEA", width: "8px", height: "8px" }} />
-                <Lens sx={{ color: "#C2C8CD", width: "8px", height: "8px" }} />
-                <Lens sx={{ color: "#C2C8CD", width: "8px", height: "8px" }} />
-                <Lens sx={{ color: "#C2C8CD", width: "8px", height: "8px" }} />
-                <Lens sx={{ color: "#C2C8CD", width: "8px", height: "8px" }} />
-            </Stack>
+            </Container>
         </Box>
     )
 }
